@@ -1,0 +1,233 @@
+body {  
+  background-color: whitesmoke;
+  font-family: "Roboto", sans-serif;
+}
+
+input[type="text"] {
+  border: none; 
+  color: #362247;
+  line-height: 2.5em;
+  min-width: 65%;
+  padding: .5em;
+}
+
+span {
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;  
+}
+
+.button {
+  background-color: #ffd591;
+  color: #362247;
+  justify-content: center;
+  align-content: center;
+  display: grid;
+  cursor: pointer;
+  border-radius: .4em;
+
+}
+.button:hover{
+  box-shadow: .1em .1em lavender;
+  font-style: italic;
+}
+
+.layout {
+  display: grid;
+  grid-template-rows: 4em minmax(auto, 530px);
+  grid-template-columns: 6em 1fr;
+  grid-gap: 1px;
+}
+
+.header {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-columns: 6em 8fr 8em;
+  grid-gap: 1px;
+  padding-right: 1em;
+  background-color: #362247;
+}
+
+.logo {
+  display: grid;
+  align-items: center;
+  text-align: center;
+  background: url("./assets/logo-lavender.svg") no-repeat center;
+  /*logo from: https://www.svgrepo.com/svg/17159/mushroom */
+}
+
+#connectButton {
+  margin-top: .75em;
+  margin-bottom: .75em;
+  overflow: hidden;
+}
+.sidebar {  
+  background-color: #362247;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 5fr 2.75fr;
+  grid-gap: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: .4em;
+  padding-right: .4em;
+}
+
+.sidebar .button {
+  margin-top: .3em;
+  margin-bottom: .3em;
+}
+
+.workspace {  
+  display: grid;  
+  grid-template-rows: 1fr 1fr;
+  grid-gap: .15em;
+}
+.workspace2x2 {
+  grid-template-columns: 1fr 1fr;
+}
+.workspace3x1 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.workspace_layout {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: .2em;
+}
+
+.workspace_layout:hover {
+  cursor: pointer;
+}
+
+.wl2x2 {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1px;
+}
+
+.wl3x1 {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1px;
+}
+
+.wl_cell {
+  background-color: gainsboro;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  font-size: .55em;
+  border-radius: .25em;
+}
+
+.wl_cell_expand {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.editor_header {
+  background-color: lavender;
+  color: #362247;
+  text-align: center;
+}
+
+.editor {
+  position: relative;
+  min-height: 20.4em;
+}
+
+#output {
+  height: 92%;
+  width: 100%;
+  border: dashed 1px #ccc;
+}
+
+.modal {
+  background-color: #CEC8EF; /* soap lavender */
+  border-radius: .3em .3em;
+
+  position: fixed;
+  z-index: 1001;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 32em;
+  max-width: 75%;
+  min-height: 15em;
+  max-height: 75%;  
+
+  display: none;
+  grid-gap: .2em;
+}
+
+.modal_close {
+  height: 50%;
+  margin-top: .5em;
+  margin-right: .5em;
+  margin-left: 90%;
+  font-size: .85em;
+}
+
+#seedPhraseModal {
+  grid-template-rows: 4em 1fr 1fr;
+}
+
+#generateSeedPhraseButton, #copySeedPhraseButton {
+  font-size: .9em;
+  padding-left: .4em;
+  padding-right: .4em;
+}
+
+#confirmSeedPhraseButton {
+  height: 50%;
+  width: 20%;
+  margin: 2em auto;
+  vertical-align: middle;
+  padding-left: 1em;
+  padding-right: 1em;  
+}
+
+#saveModal {
+  grid-template-rows: 4em 1fr 1fr 1fr 1fr;
+}
+
+#tripsModal {
+  grid-template-rows: 4em 1fr 5fr;
+  width: 48em;
+  height: 48em;
+}
+
+.trips_header {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.trip_content {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: .1em;
+  padding: .5em;
+}
+
+.trip_item {
+  background-color: lavender;
+  padding: .2em;
+  display: grid;
+  grid-template-rows: 1fr 2em;
+  grid-gap: .5em;
+  cursor: pointer;
+  overflow: scroll;
+}
+
+.trip_item > *{
+  pointer-events: none;
+}
+
+.trip_item:hover {
+  box-shadow: .25em .25em #555;
+}

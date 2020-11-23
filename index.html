@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>shroom; pure web trips</title>
+    <link rel="stylesheet" href="./global.css">       
+  </head>
+  <body> 
+  <div class="layout">
+    <div class="header"> 
+      <div class="logo"></div>           
+      <div></div>      
+      <span id="connectButton" class="button">Connect</span>     
+    </div>
+    <div class="sidebar">
+      <span id="runButton" class=" button">Run</span>
+      <span id="saveButton" class=" button">Save</span>
+      <span id="tripsButton" class=" button">Trips</span>
+      <div></div>
+      <div class="workspace_layout">
+        <div id="wl2x2" class="wl2x2">
+          <div class="wl_cell" style="background-color: #ffd591">HTML</div>
+          <div class="wl_cell" style="background-color: #ffd591">CSS</div>
+          <div class="wl_cell" style="background-color: #ffd591">JS</div>
+          <div class="wl_cell" style="background-color: #ffd591">R</div>
+        </div>
+        <div id="wl3x1" class="wl3x1">
+          <div class="wl_cell">HTML</div>
+          <div class="wl_cell">CSS</div>
+          <div class="wl_cell">JS</div>
+          <div class="wl_cell wl_cell_expand">R</div>
+        </div>
+      </div>
+    </div>
+    <div id="workspace" class="workspace workspace2x2">
+      <div>        
+        <div class="editor_header">HTML</div>
+        <div id="htmlEditor" class="editor"></div>        
+      </div>
+      <div>
+        <div class="editor_header">CSS</div>
+        <div id="cssEditor" class="editor"></div>
+      </div>
+      <div>
+        <div class="editor_header">Javascript</div>
+        <div id="jsEditor" class="editor"></div>
+      </div>
+      <div>
+        <div class="editor_header">Result</div>
+        <iframe id="output"></iframe>
+      </div>
+    </div>
+  </div>   
+  <div id="seedPhraseModal" class="modal" style="display: grid;">
+    <span class="button modal_close">Close</span>
+    <div style="padding-left: 1em; padding-right: 1em; display: grid; grid-template-columns: 75% 1fr 1fr; grid-gap: .5em; align-content: center; justify-content: center;">
+      <input id="seedPhraseInput" type="text" max-length="128" placeholder="put your desired seed phrase here..."></input>
+      <span id="generateSeedPhraseButton" class="button">Generate</span>
+      <span id="copySeedPhraseButton" class="button">Copy</span>
+    </div>
+    <span id="confirmSeedPhraseButton" class="button ">Confirm</span>
+  </div>
+  <div id="saveModal" class="modal">
+    <span class="button  modal_close">Close</span>
+    <div style="text-align: center;">
+      <input id="tripNameInput" type="text" max-length="128" placeholder="your desired trip name"></input>
+      <span id="generateTripNameButton" class="button ">Generate</span>
+    </div>    
+    <input id="tripTagsInput" type="text" placeholder="put your space-separated tages here"></input>
+    <div>
+      <input type="checkbox" id="isTripPublicCheckBox"></input>
+      <label for="isTripPublicCheckBox">Public?</label>
+    </div>
+    <span id="confirmSaveButton" class="button ">Confirm</span>
+  </div>
+  <div id="tripsModal" class="modal">
+    <div class="trips_header">
+      <span id="mineButton" class="button ">Mine</span>
+      <span id="exploreButton" class="button ">Explore</span>
+      <span class="button  modal_close">Close</span>
+    </div>
+    <input id="tripSearchInput" type="text" max-length="128" placeholder="search for tags, names, ..."></input>
+    <div id="tripContent" class="trip_content"></div>
+  </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+  <script type="text/javascript" src="./dist/index.js"></script>
+</html>
