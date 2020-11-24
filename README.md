@@ -1,6 +1,6 @@
 # shroom; pure web trips 
 A codepen clone from scratch using `IDX+Skynet`!  
-Demo: [https://siasky.net/_BlzFBlvj9yTkisAeRa_dXtaaYnwhHv2jUrEQAFh9fE8TA](https://siasky.net/_BlzFBlvj9yTkisAeRa_dXtaaYnwhHv2jUrEQAFh9fE8TA)  
+Demo: [https://siasky.net/_BmpdZ3pSNmJUE6tIuN86Kn-XvqAGh-FyGmavIFQGlODSw](https://siasky.net/_BmpdZ3pSNmJUE6tIuN86Kn-XvqAGh-FyGmavIFQGlODSwA)  
 
 ## Build
 - `yarn` to install dependencies
