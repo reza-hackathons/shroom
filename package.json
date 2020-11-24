@@ -1,13 +1,13 @@
 {
-  "name": "web-playground",
+  "name": "shroom",
   "version": "1.0.0",
-  "description": "Ceramic Web playground",
-  "author": "Ceramic Studio",
+  "description": "pue web trips",
+  "author": "Reza",
   "license": "(Apache-2.0 OR MIT)",
-  "homepage": "https://github.com/ceramicstudio/web-playground#readme",
+  "homepage": "https://github.com/rezahsnz/shroom",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ceramicstudio/web-playground.git"
+    "url": "git+https://github.com/rezahsnz/shroom.git"
   },
   "scripts": {
     "build": "webpack --config webpack.config.js",
