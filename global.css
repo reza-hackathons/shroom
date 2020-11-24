@@ -230,6 +230,7 @@ span {
   grid-gap: .5em;
   cursor: pointer;
   overflow: scroll;
+  max-height: 6.2em;
 }
 
 .trip_item > *{
