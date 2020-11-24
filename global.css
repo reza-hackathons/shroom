@@ -21,9 +21,9 @@ span {
 .button {
   background-color: #ffd591;
   color: #362247;
+  display: grid;
   justify-content: center;
   align-content: center;
-  display: grid;
   cursor: pointer;
   border-radius: .4em;
 
@@ -75,8 +75,7 @@ span {
 }
 
 .sidebar .button {
-  margin-top: .3em;
-  margin-bottom: .3em;
+  font-size: 1.2em;
 }
 
 .workspace {  
@@ -156,69 +155,78 @@ span {
   left: 50%;
   transform: translate(-50%, -50%);
 
+  grid-gap: .5em;
+  padding: .5em;
+
   min-width: 32em;
   max-width: 75%;
   min-height: 15em;
   max-height: 75%;  
 
   display: none;
-  grid-gap: .2em;
+}
+
+.modal_title {
+  text-shadow: lavender .2em .2em;
+  font-size: 1.2em;
 }
 
 .modal_close {
-  height: 50%;
-  margin-top: .5em;
-  margin-right: .5em;
-  margin-left: 90%;
-  font-size: .85em;
+  margin-left: 60%;
+  margin-bottom: 25%;
 }
 
 #seedPhraseModal {
-  grid-template-rows: 4em 1fr 1fr;
+  grid-template-rows: 4em 1fr 4em;
 }
 
-#generateSeedPhraseButton, #copySeedPhraseButton {
-  font-size: .9em;
-  padding-left: .4em;
-  padding-right: .4em;
+#generateSeedPhraseButton, #copySeedPhraseButton, #generateTripNameButton {
+  font-size: 1.2em;
 }
 
-#confirmSeedPhraseButton {
-  height: 50%;
-  width: 20%;
-  margin: 2em auto;
-  vertical-align: middle;
-  padding-left: 1em;
-  padding-right: 1em;  
+.confirm_button {
+  margin: 0 auto;
+  margin-top: .75em;
+  padding-left: 1.4em;
+  padding-right: 1.4em; 
+
 }
 
 #saveModal {
-  grid-template-rows: 4em 1fr 1fr 1fr 1fr;
+  grid-template-rows: 4em 1fr 4em;
+}
+
+#tripTagsInput {
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 #tripsModal {
-  grid-template-rows: 4em 1fr 5fr;
+  grid-template-rows: 4em .5fr 5fr;
   width: 48em;
   height: 48em;
 }
 
 .trips_header {
-  grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr 5fr 1fr;
+  grid-gap: .5em;
 }
 
 .trip_content {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: .1em;
-  padding: .5em;
+  grid-gap: .4em;
+  padding: .2em;
+  overflow: scroll;
 }
 
 .trip_item {
   background-color: lavender;
   padding: .2em;
   display: grid;
-  grid-template-rows: 1fr 2em;
+  grid-template-rows: 1fr 2em 2em;
   grid-gap: .5em;
   cursor: pointer;
   overflow: scroll;
@@ -230,4 +238,18 @@ span {
 
 .trip_item:hover {
   box-shadow: .25em .25em #555;
+}
+
+.trip_html {
+  font-size: .85em;  
+  border-bottom: dashed #bbb 1px;
+}
+
+.trip_tags {  
+  color: darkcyan;  
+  border-bottom: dashed #bbb 1px;
+}
+
+.trip_name {
+  font-style: italic;  
 }

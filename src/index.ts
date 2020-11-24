@@ -24,7 +24,8 @@ const appKeyPair = genKeyPairFromSeed("shroom acid ludes viagra ketamine weed sp
 const public_trip_name_separator = "---"
 
 let app = {
-  "saved": true
+  "saved": true,
+  "current_trip": {}
 }
 
 declare global {
@@ -150,6 +151,7 @@ const hideModals = () => {
 
 const showSeedPhraseModal = () => {
   hideModals()
+  $("#seedPhraseInput").val("")
   $("#seedPhraseModal").prop("style", "display: grid;")
 }
 
@@ -197,11 +199,27 @@ $("#copySeedPhraseButton").click( () => {
       document.getSelection()?.addRange(selected)
     }
   }
+  $("#copySeedPhraseButton").html("✍")
+  setTimeout(() => {
+    $("#copySeedPhraseButton").html("Copy")
+  }, 1000)
 
 })
 
 const showSaveModal = () => {
   hideModals()
+  console.log(app)
+  if(app["current_trip"]["tags"]) {
+    // $("#tripNameInput").val(app["current_trip"]["name"])
+    $("#tripTagsInput").val(app["current_trip"]["tags"])
+    $("#isTripPublicCheckBox").prop("checked", app["current_trip"]["public"])
+  }
+  else {
+    $("#tripNameInput").val("")
+    $("#tripTagsInput").val("")
+    $("#isTripPublicCheckBox").prop("checked", false)
+  }
+  $("#confirmSaveButton").html("Confirm")
   $("#saveModal").prop("style", "display: grid;")
 }
 
@@ -261,6 +279,7 @@ $("#confirmSaveButton").click( async() => {
                                    userRepoKey,
                                    trips)
     app["saved"] = true
+    app["current_trip"] = trip
     if(is_public == true){
       res = await window.skynet.db.getJSON(appKeyPair.publicKey,
                                            appRepoKey)
@@ -382,20 +401,21 @@ const populateTrips = (trips, exploring=false) => {
   $("#tripContent").empty()
   for(const trip_name of Object.keys(trips)) {
     const trip = trips[trip_name]
-    const html_ele = $("<div style='color: #333; border:solid 1px #aaa;'></div>")
+    const html_ele = $("<div class='trip_html'></div>")
       .text(trip["body"])
+    let tag_ele = $("<div class='trip_tags'></div>")
+      .text("Tags: " + trip.tags)
     let trip_label = trip_name
     if(exploring == true) {      
       const sep_pos = trip_name.lastIndexOf(public_trip_name_separator)
       const id = trip_name.substr(0, sep_pos)
-      const name = trip_name.substr(sep_pos + 1)
-      trip_label = id.substr(0, 4) + "..." + id.substr(-4) + public_trip_name_separator + name
+      trip_label = "Author: " + id.substr(0, 4) + "..." + id.substr(-4)
     }
-    let name_ele = $("<div style='color: #333; border:solid 1px #aaa;'></div>")
+    let name_ele = $("<div class='trip_name'></div>")
       .text(trip_label)
     let trip_ele = $(
       "<div class='trip_item' data-tripid=" + trip_name + "></div>")
-    trip_ele.append(html_ele, name_ele)
+    trip_ele.append(html_ele, tag_ele, name_ele)
     $("#tripContent").append(trip_ele)
   }
 }
@@ -433,7 +453,18 @@ const explore = async() => {
     let res = await window.skynet.db.getJSON(appKeyPair.publicKey,
                                              appRepoKey)
     if(res){
-      populateTrips(res.data, true)
+      let public_trips = res.data
+      if(window.did){
+        const id: any = window.did?.id.substr(6)
+        for(const trip_name in res.data) {
+          const sep_pos = trip_name.lastIndexOf(public_trip_name_separator)
+          const trip_author_id = trip_name.substr(0, sep_pos)
+          if(id == trip_author_id) {
+            delete public_trips[trip_name]
+          }
+        }
+      }
+      populateTrips(public_trips, true)
     }
     else{
       console.log("no public trips yet.")
@@ -451,7 +482,6 @@ $("#exploreButton").click( () => {
 
 $("#tripContent").on("click", ".trip_item", async(e) => {
   const trip_id = $(e.target).data("tripid")
-  console.log(trip_id)
   const sep_pos = trip_id.lastIndexOf(public_trip_name_separator)
   if(sep_pos < 0){
     // my trip
@@ -469,6 +499,7 @@ $("#tripContent").on("click", ".trip_item", async(e) => {
           css_editor.session.setValue(trip["css"])
           js_editor.session.setValue(trip["js"])      
           app["saved"] = true
+          app["current_trip"] = trip
         }  
         else {
           console.log("you have no trips, start one.")

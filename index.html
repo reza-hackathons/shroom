@@ -25,13 +25,13 @@
           <div class="wl_cell" style="background-color: #ffd591">HTML</div>
           <div class="wl_cell" style="background-color: #ffd591">CSS</div>
           <div class="wl_cell" style="background-color: #ffd591">JS</div>
-          <div class="wl_cell" style="background-color: #ffd591">R</div>
+          <div class="wl_cell" style="background-color: #ffd591">R..</div>
         </div>
         <div id="wl3x1" class="wl3x1">
           <div class="wl_cell">HTML</div>
           <div class="wl_cell">CSS</div>
           <div class="wl_cell">JS</div>
-          <div class="wl_cell wl_cell_expand">R</div>
+          <div class="wl_cell wl_cell_expand">Result</div>
         </div>
       </div>
     </div>
@@ -54,35 +54,42 @@
       </div>
     </div>
   </div>   
-  <div id="seedPhraseModal" class="modal" style="display: grid;">
-    <span class="button modal_close">Close</span>
-    <div style="padding-left: 1em; padding-right: 1em; display: grid; grid-template-columns: 75% 1fr 1fr; grid-gap: .5em; align-content: center; justify-content: center;">
+  <div id="seedPhraseModal" class="modal">
+    <div style="display:grid; grid-template-columns: 4fr 1fr;">
+      <div class="modal_title">Please choose a secure seed phrase.</div>
+      <span class="button  modal_close">✕</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 75% 1fr 1fr; grid-gap: .5em; align-content: center; justify-content: center;">
       <input id="seedPhraseInput" type="text" max-length="128" placeholder="put your desired seed phrase here..."></input>
-      <span id="generateSeedPhraseButton" class="button">Generate</span>
+      <span id="generateSeedPhraseButton" class="button">⟳</span>
       <span id="copySeedPhraseButton" class="button">Copy</span>
     </div>
-    <span id="confirmSeedPhraseButton" class="button ">Confirm</span>
+    <span id="confirmSeedPhraseButton" class="button confirm_button">Confirm</span>
   </div>
   <div id="saveModal" class="modal">
-    <span class="button  modal_close">Close</span>
-    <div style="text-align: center;">
-      <input id="tripNameInput" type="text" max-length="128" placeholder="your desired trip name"></input>
-      <span id="generateTripNameButton" class="button ">Generate</span>
-    </div>    
-    <input id="tripTagsInput" type="text" placeholder="put your space-separated tages here"></input>
-    <div>
-      <input type="checkbox" id="isTripPublicCheckBox"></input>
-      <label for="isTripPublicCheckBox">Public?</label>
+    <div style="display:grid; grid-template-columns: 4fr 1fr;">
+      <div class="modal_title">Fill the items below to save your trip.</div>
+      <span class="button modal_close">✕</span>
     </div>
-    <span id="confirmSaveButton" class="button ">Confirm</span>
+    <div style="display: grid; grid-template-columns: 75% 1fr; grid-gap: .5em; align-content: center; justify-content: center;">
+      <input id="tripNameInput" type="text" max-length="128" placeholder="your desired trip name"></input>
+      <span id="generateTripNameButton" class="button ">⟳</span>
+      <input id="tripTagsInput" type="text" placeholder="put your space-separated tages here"></input>
+      <div>
+        <input type="checkbox" id="isTripPublicCheckBox"></input>
+        <label for="isTripPublicCheckBox">Public?</label>
+      </div>
+    </div>    
+    <span id="confirmSaveButton" class="button confirm_button">Confirm</span>
   </div>
   <div id="tripsModal" class="modal">
     <div class="trips_header">
-      <span id="mineButton" class="button ">Mine</span>
-      <span id="exploreButton" class="button ">Explore</span>
-      <span class="button  modal_close">Close</span>
+      <span id="mineButton" class="button">Mine</span>
+      <span id="exploreButton" class="button">Explore</span>
+      <div></div>
+      <span class="button modal_close">✕</span>
     </div>
-    <input id="tripSearchInput" type="text" max-length="128" placeholder="search for tags, names, ..."></input>
+    <input id="tripSearchInput" type="text" max-length="128" placeholder="search for tags, names, ... COMING SOON!"></input>
     <div id="tripContent" class="trip_content"></div>
   </div>
   </body>
